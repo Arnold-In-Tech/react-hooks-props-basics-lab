@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 
 import Links from "../components/Links";
 
@@ -15,7 +15,7 @@ test("displays the URL of a Github link passed down as a prop", () => {
 
 test("displays the URL of a Linkedin link passed down as a prop", () => {
   render(<Links linkedin={"https://www.linkedin.com/in/liza/"} />);
-  expect(
+  waitFor(() => expect(
     screen.queryByText("https://www.linkedin.com/in/liza/")
-  ).toBeInTheDocument();
+  ).toBeInTheDocument());
 });
